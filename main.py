@@ -24,14 +24,17 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.draw_cir(qp)
 
     def draw_cir(self, qp):
-        qp.setBrush(QColor('yellow'))
+        cvet = QColor.fromHsv(random.randint(0, 359), random.randint(0, 255), random.randint(0, 255),
+                              random.randint(0, 255))
+
+        qp.setBrush(cvet)
         start = random.randint(0, 250)
 
         rad = random.randint(0, 250)
         qp.drawEllipse(start, start, start + rad, start + rad)
 
     def run(self):
-        self.risovat=True
+        self.risovat = True
         self.update()
 
 app = QApplication(sys.argv)
