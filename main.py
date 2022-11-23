@@ -1,19 +1,20 @@
 import sys
 import random
 
-from PyQt5 import uic  # Импортируем uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QPainter, QColor
 from PyQt5.QtWidgets import QWidget, QApplication
 
+from window_ui import Ui_MainWindow
 
-class MyWidget(QMainWindow):
+
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)  # Загружаем дизайн
+        self.setupUi(self)
         self.mikhail_button.clicked.connect(self.run)
 
-        self.risovat=False
+        self.risovat = False
 
     def paintEvent(self, event) -> None:
         if not self.risovat:
